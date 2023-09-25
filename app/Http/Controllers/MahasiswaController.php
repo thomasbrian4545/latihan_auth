@@ -7,15 +7,22 @@ use Illuminate\Support\Facades\Auth;
 
 class MahasiswaController extends Controller
 {
-    public function daftarMahasiswa()
+    public function daftarMahasiswa(Request $request)
     {
         // return view('halaman', ['judul' => 'Daftar Mahasiswa']);
-        echo Auth::user()->id . "<br>";
-        echo Auth::user()->name . "<br>";
-        echo Auth::user()->email . "<br>";
-        echo Auth::user()->password . "<br>";
 
-        dump(Auth::user());
+        // echo Auth::user()->id . "<br>";
+        // echo Auth::user()->name . "<br>";
+        // echo Auth::user()->email . "<br>";
+        // echo Auth::user()->password . "<br>";
+
+        // dump(Auth::user());
+
+        if (Auth::check()) {
+            echo "Selamat datang, " . $request->user()->name;
+        } else {
+            echo "Silahkan login terlebih dahulu";
+        }
     }
     public function tabelMahasiswa()
     {
